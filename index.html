@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HumanDetector AI — Help & Guides</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0d0d1a; --card: #151528; --accent: #44aaff;
+            --green: #44ff88; --red: #ff4466; --text: #e0e0f0;
+            --muted: #888899; --border: #252540;
+        }
+        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .hero {
+            text-align: center; padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #0d0d1a 0%, #1a1a3e 50%, #0d0d1a 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-icon { width: 80px; height: 80px; margin-bottom: 16px; }
+        .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { color: var(--muted); font-size: 16px; max-width: 500px; margin: 0 auto; }
+        .nav { display: flex; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+        .nav a { color: var(--accent); text-decoration: none; font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+        .cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media(min-width: 600px) { .cards { grid-template-columns: 1fr 1fr; } }
+        .card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 24px; transition: all 0.3s; cursor: pointer; text-decoration: none; color: inherit;
+            display: block;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(68,170,255,0.1); }
+        .card-icon { font-size: 32px; margin-bottom: 12px; }
+        .card h3 { font-size: 18px; margin-bottom: 8px; color: var(--accent); }
+        .card p { color: var(--muted); font-size: 14px; }
+        .card .tag { display: inline-block; font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 2px 8px; border-radius: 4px; margin-top: 12px; }
+        .tag-setup { background: #1a3a2a; color: var(--green); }
+        .tag-feature { background: #1a2a3a; color: var(--accent); }
+        .tag-ref { background: #2a1a3a; color: #bb88ff; }
+        .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        .quick-links { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+        .quick-links a { color: var(--muted); text-decoration: none; font-size: 13px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; transition: all 0.2s; }
+        .quick-links a:hover { color: var(--accent); border-color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <svg class="hero-icon" viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg">
+        <rect width="108" height="108" rx="20" fill="#1A1A2E"/>
+        <circle cx="54" cy="20" r="10" fill="#44AAFF"/>
+        <path d="M44,38 Q44,50 54,52 Q64,50 64,38 L64,65 L58,65 L58,88 L50,88 L50,65 L44,65 Z" fill="#44AAFF"/>
+        <path d="M15,15 L15,28 M15,15 L28,15" stroke="#44FF88" stroke-width="3" fill="none"/>
+        <path d="M93,15 L93,28 M93,15 L80,15" stroke="#44FF88" stroke-width="3" fill="none"/>
+        <path d="M15,93 L15,80 M15,93 L28,93" stroke="#44FF88" stroke-width="3" fill="none"/>
+        <path d="M93,93 L93,80 M93,93 L80,93" stroke="#44FF88" stroke-width="3" fill="none"/>
+    </svg>
+    <h1>HumanDetector <span>AI</span></h1>
+    <p>AI-powered security camera for Android. Setup guides, feature tutorials, and command reference.</p>
+</div>
+
+<nav class="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="telegram-setup.html">Telegram Setup</a>
+    <a href="security-camera.html">Camera Guide</a>
+    <a href="theft-mode.html">Theft Mode</a>
+    <a href="commands.html">Commands</a>
+    <a href="faq.html">FAQ</a>
+</nav>
+
+<div class="container">
+    <div class="cards">
+        <a href="telegram-setup.html" class="card">
+            <div class="card-icon">📡</div>
+            <h3>Telegram Bot Setup</h3>
+            <p>Create your bot, get your token and chat ID, set up group chats for family monitoring.</p>
+            <span class="tag tag-setup">SETUP GUIDE</span>
+        </a>
+
+        <a href="security-camera.html" class="card">
+            <div class="card-icon">📷</div>
+            <h3>Security Camera Guide</h3>
+            <p>How to position your phone, battery optimization, multi-phone setup, and best practices.</p>
+            <span class="tag tag-setup">SETUP GUIDE</span>
+        </a>
+
+        <a href="theft-mode.html" class="card">
+            <div class="card-icon">🛡</div>
+            <h3>Theft Mode</h3>
+            <p>Protect your device from theft. Grab detection, countdown, alarm, and rapid photo capture.</p>
+            <span class="tag tag-feature">FEATURE GUIDE</span>
+        </a>
+
+        <a href="commands.html" class="card">
+            <div class="card-icon">⌨️</div>
+            <h3>Remote Commands</h3>
+            <p>Complete reference for all 24+ Telegram commands with examples and tips.</p>
+            <span class="tag tag-ref">REFERENCE</span>
+        </a>
+
+        <a href="faq.html" class="card">
+            <div class="card-icon">❓</div>
+            <h3>FAQ & Troubleshooting</h3>
+            <p>Common issues, false positive reduction, battery drain fixes, and connection problems.</p>
+            <span class="tag tag-ref">REFERENCE</span>
+        </a>
+
+        <a href="privacy-policy.html" class="card">
+            <div class="card-icon">🔒</div>
+            <h3>Privacy Policy</h3>
+            <p>How your data is handled. Spoiler: we collect nothing. Everything stays on your device.</p>
+            <span class="tag tag-ref">LEGAL</span>
+        </a>
+    </div>
+
+    <div class="quick-links">
+        <a href="https://play.google.com/store/apps/details?id=com.humandetector.ai">Google Play</a>
+        <a href="mailto:humandetectorai@gmail.com">Contact</a>
+    </div>
+</div>
+
+<div class="footer">
+    <p>HumanDetector AI — v1.0 | <a href="privacy-policy.html">Privacy Policy</a> | <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
+</div>
+
+</body>
+</html>

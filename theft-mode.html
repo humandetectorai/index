@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theft Mode — HumanDetector AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0d0d1a; --card: #151528; --accent: #44aaff; --green: #44ff88; --red: #ff4466; --text: #e0e0f0; --muted: #888899; --border: #252540; }
+        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .nav { display: flex; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+        .nav a { color: var(--accent); text-decoration: none; font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+        h1 { font-size: 28px; margin-bottom: 8px; } h1 span { color: var(--red); }
+        .subtitle { color: var(--muted); margin-bottom: 32px; }
+        h2 { font-size: 20px; color: var(--accent); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 16px; margin: 20px 0 8px; color: var(--green); }
+        p { margin-bottom: 12px; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a35; padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--green); }
+        .tip { background: #1a2a1a; border: 1px solid #335533; border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .tip::before { content: "💡 "; }
+        .warn { background: #2a1a1a; border: 1px solid #553333; border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .warn::before { content: "⚠ "; }
+        .flow { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 16px 0; }
+        .flow-step { display: flex; align-items: flex-start; gap: 12px; margin: 12px 0; }
+        .flow-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .flow-icon.trigger { background: #2a1a1a; border: 2px solid var(--red); }
+        .flow-icon.countdown { background: #2a2a1a; border: 2px solid #ffaa44; }
+        .flow-icon.active { background: #2a1a2a; border: 2px solid #ff44aa; }
+        .flow-icon.stop { background: #1a2a1a; border: 2px solid var(--green); }
+        .flow-arrow { text-align: center; color: var(--muted); font-size: 20px; margin: 4px 0; }
+        .flow-text h4 { font-size: 14px; margin-bottom: 4px; }
+        .flow-text p { font-size: 13px; color: var(--muted); margin: 0; }
+        .scenario { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .scenario h4 { color: var(--accent); margin-bottom: 8px; }
+        .scenario p { font-size: 14px; margin-bottom: 4px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { margin-bottom: 6px; }
+        a { color: var(--accent); }
+        .settings-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .settings-table th { text-align: left; padding: 8px 12px; background: #1a1a35; color: var(--accent); font-size: 13px; }
+        .settings-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="telegram-setup.html">Telegram Setup</a>
+    <a href="security-camera.html">Camera Guide</a>
+    <a href="theft-mode.html" class="active">Theft Mode</a>
+    <a href="commands.html">Commands</a>
+    <a href="faq.html">FAQ</a>
+</nav>
+
+<div class="container">
+    <h1>Theft <span>Mode</span></h1>
+    <p class="subtitle">Turn your phone into a self-defending security device that makes theft counterproductive.</p>
+
+    <h2>What It Does</h2>
+    <p>When someone picks up your phone, Theft Mode:</p>
+    <ul>
+        <li>Detects the grab using the accelerometer</li>
+        <li>Gives a 15-second countdown (with warning beep) to enter the PIN</li>
+        <li>If PIN is not entered — activates full alarm: loud sound + flashlight strobe + rapid photos sent to your Telegram every 0.5 seconds</li>
+        <li>Photos alternate between front and back cameras to capture the thief's face AND surroundings</li>
+        <li>Auto-stops after your configured duration (1-5 minutes)</li>
+    </ul>
+
+    <h2>How It Works — Step by Step</h2>
+
+    <div class="flow">
+        <div class="flow-step">
+            <div class="flow-icon trigger">📱</div>
+            <div class="flow-text">
+                <h4>1. Grab Detected</h4>
+                <p>Accelerometer detects sudden movement. A photo + alert is sent to Telegram immediately.</p>
+            </div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+            <div class="flow-icon countdown">⏱</div>
+            <div class="flow-text">
+                <h4>2. Countdown (15 seconds)</h4>
+                <p>Warning beep plays. Big red numbers on screen. PIN pad visible. Enter PIN to cancel.</p>
+            </div>
+        </div>
+        <div class="flow-arrow">↓ PIN not entered</div>
+        <div class="flow-step">
+            <div class="flow-icon active">🚨</div>
+            <div class="flow-text">
+                <h4>3. Full Theft Mode</h4>
+                <p>Maximum volume alarm + flashlight strobe + photos every 0.5s + camera alternates front/back every 5s. Every photo has a clickable /unlock command.</p>
+            </div>
+        </div>
+        <div class="flow-arrow">↓ PIN entered, /unlock tapped, or timeout</div>
+        <div class="flow-step">
+            <div class="flow-icon stop">✅</div>
+            <div class="flow-text">
+                <h4>4. Stopped</h4>
+                <p>Alarm stops, strobe stops, photos stop. Phone returns to normal monitoring.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Power Disconnect Alert</h2>
+    <p>Separate from grab detection — always active when Theft Mode is armed. If someone unplugs the charger:</p>
+    <ul>
+        <li>3-second grace period (avoids false alarm from accidental cable bumps)</li>
+        <li>If still disconnected after 3 seconds — sends a photo + "⚡ POWER DISCONNECTED" to Telegram</li>
+        <li>When power is restored — sends "🔌 Power restored"</li>
+    </ul>
+
+    <h2>Settings</h2>
+
+    <table class="settings-table">
+        <tr><th>Setting</th><th>Options</th><th>Recommendation</th></tr>
+        <tr><td>Theft Mode Armed</td><td>ON / OFF</td><td>ON when phone is deployed</td></tr>
+        <tr><td>Theft Alarm Tone</td><td>Beep / Siren / Pulse / Fire / Warning</td><td>Fire Alarm (loudest)</td></tr>
+        <tr><td>Theft Duration</td><td>1-5 minutes</td><td>3-5 minutes</td></tr>
+    </table>
+
+    <div class="tip">The theft alarm tone is <strong>separate</strong> from the regular detection alarm tone. You can have a soft warning beep for regular detection and a loud fire alarm for theft.</div>
+
+    <h2>How to Stop It</h2>
+    <ul>
+        <li><strong>Enter PIN on screen</strong> — works during countdown or full theft mode</li>
+        <li><strong>Tap /unlock in Telegram</strong> — every theft photo has a clickable /unlock command</li>
+        <li><strong>Send /unlock_devicename</strong> via Telegram — e.g., <code>/unlock_kitchen</code></li>
+        <li><strong>Wait</strong> — auto-stops after configured duration (1-5 min)</li>
+    </ul>
+
+    <h2>Use Cases Beyond Security Cameras</h2>
+
+    <p>Theft Mode works on any phone — it doesn't have to be a security camera. Here are ways to use it:</p>
+
+    <div class="scenario">
+        <h4>🏖 Phone on the Beach</h4>
+        <p>Leave your phone on your towel while swimming. Arm theft mode. If someone grabs it — loud alarm + their face is sent to your friend's Telegram (set up a group chat).</p>
+    </div>
+
+    <div class="scenario">
+        <h4>☕ Phone at a Coffee Shop</h4>
+        <p>Set your phone on the table, arm theft mode. Step away to get your coffee. If it moves — alarm + photos.</p>
+    </div>
+
+    <div class="scenario">
+        <h4>🏨 Hotel Room</h4>
+        <p>Leave your phone facing the door with theft mode armed. If someone enters and moves the phone — instant alert with photos.</p>
+    </div>
+
+    <div class="scenario">
+        <h4>🚗 Phone in the Car</h4>
+        <p>Leave an old phone on the dashboard. Arm theft mode. If the car is broken into and the phone grabbed — alarm + thief's photo sent to your Telegram.</p>
+    </div>
+
+
+    <h2>Remote Commands</h2>
+    <ul>
+        <li><code>/theft_on_devicename</code> — arm grab detection remotely</li>
+        <li><code>/theft_off_devicename</code> — disarm remotely</li>
+        <li><code>/stolen_devicename</code> — activate full theft mode immediately (skip countdown)</li>
+        <li><code>/unlock_devicename</code> — stop theft mode and unlock phone</li>
+    </ul>
+
+    <div class="tip">The <code>/stolen</code> command is for when you realize your phone was stolen after the fact. Send it from any Telegram device and the phone activates full alarm + starts sending photos immediately.</div>
+
+    <h2>Tips</h2>
+    <ul>
+        <li>Always set a PIN before arming theft mode — otherwise there's no countdown, just immediate alarm</li>
+        <li>Place the phone on a stable surface — vibrating surfaces may cause false triggers</li>
+        <li>Keep Telegram configured — the photos are your evidence</li>
+        <li>The front camera captures the thief's face, the back camera captures the surroundings</li>
+        <li>Pin the /help message in Telegram for instant access to /unlock during an emergency</li>
+    </ul>
+
+    <div class="warn">Theft Mode is a deterrent and evidence tool. It does not physically prevent theft. Always prioritize your personal safety over your phone.</div>
+</div>
+
+<div class="footer">
+    <p><a href="security-camera.html">← Camera Guide</a> | <a href="commands.html">Next: Commands Reference →</a></p>
+</div>
+
+</body>
+</html>

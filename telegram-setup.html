@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Setup — HumanDetector AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0d0d1a; --card: #151528; --accent: #44aaff; --green: #44ff88; --text: #e0e0f0; --muted: #888899; --border: #252540; }
+        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .nav { display: flex; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+        .nav a { color: var(--accent); text-decoration: none; font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+        h1 { font-size: 28px; margin-bottom: 8px; }
+        h1 span { color: var(--accent); }
+        .subtitle { color: var(--muted); margin-bottom: 32px; }
+        h2 { font-size: 20px; color: var(--accent); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 16px; margin: 20px 0 8px; color: var(--green); }
+        p { margin-bottom: 12px; }
+        .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 16px 0; }
+        .step-num { display: inline-block; background: var(--accent); color: var(--bg); font-weight: 700; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 14px; margin-right: 8px; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a35; padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--green); }
+        .code-block { background: #1a1a35; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; overflow-x: auto; margin: 12px 0; color: var(--green); line-height: 1.5; word-break: break-all; }
+        .warn { background: #2a1a1a; border: 1px solid #553333; border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .warn::before { content: "⚠ "; }
+        .tip { background: #1a2a1a; border: 1px solid #335533; border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .tip::before { content: "💡 "; }
+        .diagram { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 16px 0; text-align: center; }
+        .diagram svg { max-width: 100%; height: auto; }
+        .chat-bubble { background: #1a2a3a; border-radius: 12px; padding: 12px 16px; margin: 8px 0; max-width: 80%; font-size: 14px; }
+        .chat-bubble.user { margin-left: auto; background: #2a3a2a; }
+        .chat-bubble.bot { margin-right: auto; }
+        .chat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+        .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        a { color: var(--accent); }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="telegram-setup.html" class="active">Telegram Setup</a>
+    <a href="security-camera.html">Camera Guide</a>
+    <a href="theft-mode.html">Theft Mode</a>
+    <a href="commands.html">Commands</a>
+    <a href="faq.html">FAQ</a>
+</nav>
+
+<div class="container">
+    <h1>Telegram Bot <span>Setup</span></h1>
+    <p class="subtitle">Get photo alerts and remote control your security camera via Telegram in 5 minutes.</p>
+
+    <h2>What You Need</h2>
+    <ul>
+        <li>Telegram app installed on your personal phone, tablet, or computer (also works via <a href="https://web.telegram.org" target="_blank">web.telegram.org</a> in any browser)</li>
+        <li>A Telegram account</li>
+        <li>5 minutes</li>
+    </ul>
+
+    <div class="diagram">
+        <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="20" width="130" height="80" rx="10" fill="#1a2a3a" stroke="#44aaff" stroke-width="2"/>
+            <text x="75" y="55" fill="#e0e0f0" font-size="12" text-anchor="middle" font-family="Source Sans 3">Security Phone</text>
+            <text x="75" y="72" fill="#888899" font-size="10" text-anchor="middle" font-family="Source Sans 3">(runs the app)</text>
+            <path d="M140,60 L240,60" stroke="#44ff88" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="190" y="50" fill="#44ff88" font-size="10" text-anchor="middle" font-family="JetBrains Mono">photos</text>
+            <rect x="240" y="20" width="130" height="80" rx="10" fill="#1a3a2a" stroke="#44ff88" stroke-width="2"/>
+            <text x="305" y="55" fill="#e0e0f0" font-size="12" text-anchor="middle" font-family="Source Sans 3">Telegram Bot</text>
+            <text x="305" y="72" fill="#888899" font-size="10" text-anchor="middle" font-family="Source Sans 3">(your messenger)</text>
+            <path d="M370,60 L460,60" stroke="#44aaff" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="415" y="50" fill="#44aaff" font-size="10" text-anchor="middle" font-family="JetBrains Mono">alerts</text>
+            <rect x="460" y="20" width="130" height="80" rx="10" fill="#2a1a3a" stroke="#bb88ff" stroke-width="2"/>
+            <text x="525" y="55" fill="#e0e0f0" font-size="12" text-anchor="middle" font-family="Source Sans 3">You</text>
+            <text x="525" y="72" fill="#888899" font-size="10" text-anchor="middle" font-family="Source Sans 3">(phone/PC/browser)</text>
+        </svg>
+    </div>
+
+    <h2>Step 1: Create Your Telegram Bot</h2>
+
+    <div class="step">
+        <p><span class="step-num">1</span> Open Telegram on your personal phone</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">2</span> Search for <code>@BotFather</code> and tap <strong>Start</strong></p>
+        <p>BotFather is Telegram's official bot for creating other bots. Look for the blue verified checkmark.</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">3</span> Send the command <code>/newbot</code></p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">4</span> Enter a display name (e.g., "My Security Camera")</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">5</span> Enter a username ending in <code>bot</code> (e.g., "mysecuritycam_bot")</p>
+        <p>The username must be unique. If taken, try adding numbers.</p>
+    </div>
+
+    <p>BotFather will reply with your <strong>Bot Token</strong> — a long string like:</p>
+    <div class="code-block">1234567890:ABCdefGHIjklMNOpqrSTUvwxYZ123456789</div>
+
+    <div class="warn">Save this token! You'll enter it in the app's Settings. Don't share it with anyone — it controls your bot.</div>
+
+    <h2>Step 2: Get Your Chat ID</h2>
+
+    <div class="step">
+        <p><span class="step-num">1</span> Open your new bot in Telegram (search for the username you just created)</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">2</span> Tap <strong>Start</strong> and send any message (e.g., "hello")</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">3</span> Open this URL in your browser (replace YOUR_TOKEN with your actual token):</p>
+        <div class="code-block">https://api.telegram.org/botYOUR_TOKEN/getUpdates</div>
+    </div>
+    <div class="step">
+        <p><span class="step-num">4</span> Find <code>"id"</code> inside the <code>"chat"</code> object:</p>
+        <div class="code-block">"chat":{"id":987654321,"first_name":"Your Name"}</div>
+        <p>The number (e.g., <code>987654321</code>) is your <strong>Chat ID</strong>.</p>
+    </div>
+
+    <div class="tip">Can't find the Chat ID? Make sure you sent a message to the bot FIRST, then refresh the getUpdates URL.</div>
+
+    <h2>Step 3: Enter in the App</h2>
+
+    <div class="step">
+        <p><span class="step-num">1</span> Open HumanDetector AI → tap <strong>Settings</strong></p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">2</span> Paste your <strong>Bot Token</strong> and <strong>Chat ID</strong></p>
+        <p>Fields are masked by default (shown as dots). Tap the 👁 eye button to reveal them while pasting.</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">3</span> Tap <strong>Test Connection</strong></p>
+        <p>You should see "✅ Connection OK" and receive a test message in your Telegram chat.</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">4</span> Tap <strong>Save Settings</strong></p>
+    </div>
+
+    <h2>Optional: Group Chat for Family Monitoring</h2>
+
+    <p>Want family members or a security team to also see alerts and send commands?</p>
+
+    <div class="step">
+        <p><span class="step-num">1</span> Create a Telegram group (e.g., "Home Security")</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">2</span> Add your bot to the group (search for its username)</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">3</span> Send a message in the group</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">4</span> Visit the getUpdates URL again — look for the group chat ID (it's a <strong>negative number</strong> like <code>-1001234567890</code>)</p>
+    </div>
+    <div class="step">
+        <p><span class="step-num">5</span> Use this group Chat ID in the app instead of your personal Chat ID</p>
+    </div>
+
+    <div class="tip">All group members can now see alerts and send commands. Use device names (e.g., /unlock_kitchen) to control specific phones.</div>
+
+    <h2>Multi-Phone Setup</h2>
+
+    <p>You can use the <strong>same bot and chat ID</strong> on multiple phones. Give each phone a unique <strong>Device Name</strong> in Settings (e.g., "kitchen", "frontdoor", "garage").</p>
+
+    <div class="diagram">
+        <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="120" height="60" rx="8" fill="#1a2a3a" stroke="#44aaff" stroke-width="1.5"/>
+            <text x="70" y="35" fill="#e0e0f0" font-size="11" text-anchor="middle" font-family="Source Sans 3">Kitchen Phone</text>
+            <text x="70" y="50" fill="#44aaff" font-size="9" text-anchor="middle" font-family="JetBrains Mono">name: kitchen</text>
+            <rect x="10" y="80" width="120" height="60" rx="8" fill="#1a2a3a" stroke="#44aaff" stroke-width="1.5"/>
+            <text x="70" y="105" fill="#e0e0f0" font-size="11" text-anchor="middle" font-family="Source Sans 3">Front Door</text>
+            <text x="70" y="120" fill="#44aaff" font-size="9" text-anchor="middle" font-family="JetBrains Mono">name: frontdoor</text>
+            <path d="M130,40 L250,90" stroke="#44ff88" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <path d="M130,110 L250,90" stroke="#44ff88" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <rect x="250" y="55" width="120" height="60" rx="8" fill="#1a3a2a" stroke="#44ff88" stroke-width="1.5"/>
+            <text x="310" y="80" fill="#e0e0f0" font-size="11" text-anchor="middle" font-family="Source Sans 3">Same Bot</text>
+            <text x="310" y="95" fill="#44ff88" font-size="9" text-anchor="middle" font-family="JetBrains Mono">same token+chatID</text>
+            <path d="M370,85 L470,85" stroke="#bb88ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <rect x="470" y="55" width="120" height="60" rx="8" fill="#2a1a3a" stroke="#bb88ff" stroke-width="1.5"/>
+            <text x="530" y="80" fill="#e0e0f0" font-size="11" text-anchor="middle" font-family="Source Sans 3">Your Telegram</text>
+            <text x="530" y="95" fill="#bb88ff" font-size="9" text-anchor="middle" font-family="JetBrains Mono">all alerts here</text>
+        </svg>
+    </div>
+
+    <p>Send <code>/help</code> to see clickable commands for each phone. Tap any command to send it instantly.</p>
+
+    <h2>Need More Help?</h2>
+    <ul>
+        <li><a href="https://core.telegram.org/bots#how-do-i-create-a-bot">Telegram's Official Bot Guide</a></li>
+        <li><a href="commands.html">Full Command Reference</a></li>
+        <li><a href="faq.html">FAQ & Troubleshooting</a></li>
+        <li>Email: <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></li>
+    </ul>
+</div>
+
+<div class="footer">
+    <p><a href="index.html">← Back to Help Home</a> | <a href="security-camera.html">Next: Camera Setup →</a></p>
+</div>
+
+</body>
+</html>

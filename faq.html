@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Troubleshooting — HumanDetector AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0d0d1a; --card: #151528; --accent: #44aaff; --green: #44ff88; --text: #e0e0f0; --muted: #888899; --border: #252540; }
+        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .nav { display: flex; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+        .nav a { color: var(--accent); text-decoration: none; font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+        h1 { font-size: 28px; margin-bottom: 8px; } h1 span { color: var(--accent); }
+        .subtitle { color: var(--muted); margin-bottom: 32px; }
+        h2 { font-size: 20px; color: var(--accent); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        p { margin-bottom: 12px; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a35; padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--green); }
+        .faq { margin: 16px 0; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin: 8px 0; overflow: hidden; }
+        .faq-q { padding: 16px; cursor: pointer; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q:hover { background: #1a1a30; }
+        .faq-q::after { content: "+"; color: var(--accent); font-size: 20px; transition: transform 0.2s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 16px 16px; font-size: 14px; color: var(--muted); display: none; }
+        .faq-item.open .faq-a { display: block; }
+        a { color: var(--accent); }
+        .contact { background: var(--card); border: 1px solid var(--accent); border-radius: 12px; padding: 24px; margin-top: 32px; text-align: center; }
+        .contact h3 { color: var(--accent); margin-bottom: 8px; }
+        .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="telegram-setup.html">Telegram Setup</a>
+    <a href="security-camera.html">Camera Guide</a>
+    <a href="theft-mode.html">Theft Mode</a>
+    <a href="commands.html">Commands</a>
+    <a href="faq.html" class="active">FAQ</a>
+</nav>
+
+<div class="container">
+    <h1>FAQ & <span>Troubleshooting</span></h1>
+    <p class="subtitle">Quick answers to common questions and issues.</p>
+
+    <h2>Common Questions</h2>
+
+    <div class="faq">
+        <div class="faq-item">
+            <div class="faq-q">Does the app work without Telegram?</div>
+            <div class="faq-a">Yes. Without Telegram, the app still detects humans, sounds the alarm, and saves photos to your gallery. Telegram adds remote alerts and commands but is not required.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does it work without internet?</div>
+            <div class="faq-a">The AI detection and alarm work completely offline. Photos are saved locally. Only Telegram features require internet (Wi-Fi or mobile data).</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Can I use my daily phone as the security camera?</div>
+            <div class="faq-a">Yes, but the app needs the camera running continuously. Best to use a spare/old phone so your main phone stays available. Theft Mode works great on your daily phone though — arm it when you leave your phone unattended.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does it detect animals?</div>
+            <div class="faq-a">The AI is trained specifically for humans. It won't detect cats, dogs, or other animals. This is by design — it reduces false alarms from pets.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How much storage do photos use?</div>
+            <div class="faq-a">Each photo is about 50-150KB (JPEG). At default settings (1 photo per second during detection), that's roughly 5-10MB per minute of active detection. Photos are organized in daily/hourly folders for easy cleanup.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Can multiple people control the cameras?</div>
+            <div class="faq-a">Yes. Set up a Telegram group, add your bot, and use the group's Chat ID. Everyone in the group can see alerts and send commands.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my data sent to any server?</div>
+            <div class="faq-a">No. All AI processing happens on your phone. Photos are only sent to YOUR Telegram chat using YOUR bot. We have no servers and collect zero data. See our <a href="privacy-policy.html">Privacy Policy</a>.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What phones are supported?</div>
+            <div class="faq-a">Any Android phone running Android 8.0 (API 26) or higher. The app uses GPU acceleration when available for faster detection. Tested on Samsung Galaxy A50 and S22.</div>
+        </div>
+    </div>
+
+    <h2>Troubleshooting</h2>
+
+    <div class="faq">
+        <div class="faq-item">
+            <div class="faq-q">Detection stops after a few hours</div>
+            <div class="faq-a">Samsung and other manufacturers kill background apps aggressively. Fix: <strong>Settings → Apps → HumanDetector AI → Battery → Unrestricted</strong>. Also keep the phone plugged in. Enable Heartbeat (every 15 min) so you know if the app is still running.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Too many false positives</div>
+            <div class="faq-a">Try these in order: 1) Enable Face Verification (filters 50-75% of false positives). 2) Raise confidence to 55%. 3) Increase consecutive frames to 4 or 5. 4) Avoid pointing at TVs or laptops — moving images trigger detection.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Telegram test connection fails</div>
+            <div class="faq-a">Check that: 1) Bot token has no extra spaces. 2) You sent /start to the bot first. 3) Chat ID is correct (use getUpdates URL). 4) Phone has internet access. 5) Tap the 👁 eye button to reveal and verify the token.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Commands not working via Telegram</div>
+            <div class="faq-a">Commands are polled every 7 seconds — wait a moment. Check: 1) Bot token and chat ID are correct. 2) Device Name matches exactly (case-insensitive). 3) Send /status to verify the phone is online.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Face Verification misses real humans</div>
+            <div class="faq-a">FV requires a visible face. If the person is facing away, wearing a full face covering, or the camera angle only shows the top of their head, FV will filter them out. Send <code>/fv_off_NAME</code> to disable it in those situations.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Grab detection too sensitive / not sensitive enough</div>
+            <div class="faq-a">Grab detection uses a fixed sensitivity tuned for stationary placement. The phone must be still for about 5 seconds (calibration phase) before detection activates. Small movements while holding the phone do not trigger it — only a clear pickup does. If placed on a vibrating surface (e.g., near a washing machine), try repositioning to a more stable spot.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Black screen on first launch</div>
+            <div class="faq-a">The consent dialog may delay camera startup. Tap Accept, then wait a moment. If the camera still doesn't start, tap the Flip button twice (flip to front camera, then back). This forces a camera restart.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Status shows "noFV"</div>
+            <div class="faq-a">The face verification model file is missing. This shouldn't happen with Play Store installs. If sideloading, ensure <code>face_detection_short_range.tflite</code> is in the assets folder.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">App crashes on start</div>
+            <div class="faq-a">Try: 1) Clear app data (Settings → Apps → HumanDetector AI → Storage → Clear Data). 2) Reinstall the app. 3) If the problem persists, email us with your phone model and Android version.</div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h3>Still Need Help?</h3>
+        <p>Email us at <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
+        <p style="color: var(--muted); font-size: 13px; margin-top: 8px;">Include your phone model, Android version, and a description of the issue.</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p><a href="commands.html">← Commands</a> | <a href="index.html">Back to Help Home</a></p>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('open');
+    });
+});
+</script>
+
+</body>
+</html>

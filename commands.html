@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands Reference — HumanDetector AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0d0d1a; --card: #151528; --accent: #44aaff; --green: #44ff88; --text: #e0e0f0; --muted: #888899; --border: #252540; }
+        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .nav { display: flex; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+        .nav a { color: var(--accent); text-decoration: none; font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+        h1 { font-size: 28px; margin-bottom: 8px; } h1 span { color: var(--accent); }
+        .subtitle { color: var(--muted); margin-bottom: 32px; }
+        h2 { font-size: 20px; color: var(--accent); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        p { margin-bottom: 12px; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a35; padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--green); }
+        .tip { background: #1a2a1a; border: 1px solid #335533; border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .tip::before { content: "💡 "; }
+        .cmd-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .cmd-table th { text-align: left; padding: 10px 12px; background: #1a1a35; color: var(--accent); font-size: 12px; font-family: 'JetBrains Mono', monospace; position: sticky; top: 0; }
+        .cmd-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: top; }
+        .cmd-table td:first-child { font-family: 'JetBrains Mono', monospace; color: var(--green); font-size: 12px; white-space: nowrap; }
+        .cmd-section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 16px 0; }
+        .cmd-section-title { padding: 12px 16px; background: #1a1a2e; font-weight: 600; font-size: 14px; border-bottom: 1px solid var(--border); }
+        a { color: var(--accent); }
+        .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="telegram-setup.html">Telegram Setup</a>
+    <a href="security-camera.html">Camera Guide</a>
+    <a href="theft-mode.html">Theft Mode</a>
+    <a href="commands.html" class="active">Commands</a>
+    <a href="faq.html">FAQ</a>
+</nav>
+
+<div class="container">
+    <h1>Remote <span>Commands</span></h1>
+    <p class="subtitle">Control your security cameras from anywhere via Telegram.</p>
+
+    <p>Send <code>/help</code> to your bot to get a clickable list of all commands customized with your device name. Tap any command to send it instantly.</p>
+
+    <div class="tip">Commands use underscore format for one-tap sending: <code>/unlock_kitchen</code>. You can also type with spaces: <code>/unlock kitchen</code>. Both work.</div>
+
+    <h2>Broadcast Commands</h2>
+    <p>These work without a device name — all connected phones respond.</p>
+
+    <div class="cmd-section">
+        <table class="cmd-table">
+            <tr><th>Command</th><th>What it does</th></tr>
+            <tr><td>/photo</td><td>Take and send a photo with detection boxes. Shortcut: /p</td></tr>
+            <tr><td>/status</td><td>Full status: detection state, engine, battery, all settings. Shortcut: /s</td></tr>
+            <tr><td>/help</td><td>Show clickable command list for all connected phones. Shortcut: /h</td></tr>
+            <tr><td>/alarm</td><td>Sound the alarm on all phones. Shortcut: /a</td></tr>
+        </table>
+    </div>
+
+    <h2>Device-Specific Commands</h2>
+    <p>Replace <code>NAME</code> with your device name (e.g., <code>kitchen</code>, <code>frontdoor</code>).</p>
+
+    <div class="cmd-section">
+        <div class="cmd-section-title">🔒 Security</div>
+        <table class="cmd-table">
+            <tr><th>Command</th><th>What it does</th></tr>
+            <tr><td>/lock_NAME</td><td>Lock the app screen (requires PIN to unlock on device)</td></tr>
+            <tr><td>/unlock_NAME</td><td>Unlock screen + stop theft mode + stop alarm</td></tr>
+            <tr><td>/resetpin_NAME</td><td>Clear PIN (asks for confirmation first)</td></tr>
+        </table>
+    </div>
+
+    <div class="cmd-section">
+        <div class="cmd-section-title">🛡 Theft Mode</div>
+        <table class="cmd-table">
+            <tr><th>Command</th><th>What it does</th></tr>
+            <tr><td>/theft_on_NAME</td><td>Arm grab detection</td></tr>
+            <tr><td>/theft_off_NAME</td><td>Disarm grab detection</td></tr>
+            <tr><td>/stolen_NAME</td><td>Activate full theft mode immediately (skip countdown)</td></tr>
+        </table>
+    </div>
+
+    <div class="cmd-section">
+        <div class="cmd-section-title">📷 Camera</div>
+        <table class="cmd-table">
+            <tr><th>Command</th><th>What it does</th></tr>
+            <tr><td>/flip_NAME</td><td>Switch between front and back camera</td></tr>
+            <tr><td>/rotate_NAME</td><td>Toggle landscape / reverse landscape orientation</td></tr>
+        </table>
+    </div>
+
+    <div class="cmd-section">
+        <div class="cmd-section-title">🔔 Alarm</div>
+        <table class="cmd-table">
+            <tr><th>Command</th><th>What it does</th></tr>
+            <tr><td>/alarm_NAME</td><td>Sound alarm on specific phone</td></tr>
+            <tr><td>/alarm_off_NAME</td><td>Stop alarm</td></tr>
+            <tr><td>/alarm_enable_NAME</td><td>Enable auto-alarm on detection</td></tr>
+            <tr><td>/alarm_disable_NAME</td><td>Disable auto-alarm</td></tr>
+            <tr><td>/alarmdur_N_NAME</td><td>Set alarm duration (1-60 seconds). Example: /alarmdur_10_kitchen</td></tr>
+        </table>
+    </div>
+
+    <div class="cmd-section">
+        <div class="cmd-section-title">⚙ Settings</div>
+        <table class="cmd-table">
+            <tr><th>Command</th><th>What it does</th></tr>
+            <tr><td>/torch_on_NAME</td><td>Turn on flashlight</td></tr>
+            <tr><td>/torch_off_NAME</td><td>Turn off flashlight</td></tr>
+            <tr><td>/dim_on_NAME</td><td>Dim screen (true black, saves battery)</td></tr>
+            <tr><td>/dim_off_NAME</td><td>Restore screen brightness</td></tr>
+            <tr><td>/fv_on_NAME</td><td>Enable face verification</td></tr>
+            <tr><td>/fv_off_NAME</td><td>Disable face verification</td></tr>
+            <tr><td>/alerts_on_NAME</td><td>Enable Telegram photo alerts</td></tr>
+            <tr><td>/alerts_off_NAME</td><td>Disable photo alerts (still saves locally)</td></tr>
+            <tr><td>/mode_motion_NAME</td><td>Motion-triggered mode (AI only runs on scene change)</td></tr>
+            <tr><td>/mode_continuous_NAME</td><td>Continuous mode (AI runs every frame)</td></tr>
+            <tr><td>/hb_on_N_NAME</td><td>Set heartbeat interval (5/10/15/30/60 min). Example: /hb_on_15_kitchen</td></tr>
+            <tr><td>/hb_off_NAME</td><td>Disable heartbeat</td></tr>
+            <tr><td>/interval_N_NAME</td><td>Set photo send interval (0.5-10 seconds). Example: /interval_2_kitchen</td></tr>
+        </table>
+    </div>
+
+    <h2>Pro Tips</h2>
+    <ul>
+        <li><strong>Pin the /help message</strong> in your Telegram chat for instant access to all commands</li>
+        <li>During theft mode, every photo has a clickable <code>/unlock</code> — tap any photo to stop it</li>
+        <li>Use <code>/status</code> to check battery and settings on all phones at once</li>
+        <li>Heartbeat pings confirm the phone is still running — set to 15 min for peace of mind</li>
+        <li>Wrong device? Commands with another device's name are silently ignored — no accidental triggers</li>
+    </ul>
+</div>
+
+<div class="footer">
+    <p><a href="theft-mode.html">← Theft Mode</a> | <a href="faq.html">Next: FAQ →</a></p>
+</div>
+
+</body>
+</html>
