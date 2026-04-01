@@ -1,2 +1,1 @@
-# index
-Help-privacy policy
+privacy-policy.html
