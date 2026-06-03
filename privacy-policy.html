@@ -9,9 +9,22 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --bg: #0d0d1a; --card: #151528; --accent: #44aaff; --green: #44ff88; --text: #e0e0f0; --muted: #888899; --border: #252540; }
         body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-        .nav { display: flex; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-        .nav a { color: var(--accent); text-decoration: none; font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
-        .nav a:hover, .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .nav {
+            display: flex; justify-content: center; gap: 6px;
+            padding: 14px 20px;
+            background: var(--card);
+            border-top: 2px solid var(--accent);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: var(--muted); text-decoration: none; font-size: 12px;
+            font-family: 'JetBrains Mono', monospace; padding: 6px 13px;
+            border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s;
+            letter-spacing: 0.02em;
+        }
+        .nav a:hover { background: rgba(68,170,255,0.08); border-color: var(--accent); color: var(--accent); }
+        .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
         .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
         h1 { font-size: 28px; margin-bottom: 8px; } h1 span { color: var(--accent); }
         .subtitle { color: var(--muted); margin-bottom: 32px; }
@@ -53,16 +66,12 @@
 
 <nav class="nav">
     <a href="index.html">Home</a>
-    <a href="telegram-setup.html">Telegram Setup</a>
-    <a href="security-camera.html">Camera Guide</a>
-    <a href="theft-mode.html">Theft Mode</a>
-    <a href="commands.html">Commands</a>
-    <a href="faq.html">FAQ</a>
+    <a href="privacy-policy.html" class="active">Privacy Policy</a>
 </nav>
 
 <div class="container">
     <h1>Privacy <span>Policy</span></h1>
-    <p class="subtitle">HumanDetector AI — "Human Detector — AI Security Camera" | Last updated: April 2026</p>
+    <p class="subtitle">HumanDetector AI — "Human Detector — AI Security Camera" | Last updated: June 2026</p>
 
     <h2>Overview</h2>
     <p>HumanDetector AI is a security camera app that runs entirely on your device. We do not collect, store, or transmit any personal data to our servers. We do not have servers.</p>
@@ -73,7 +82,7 @@
 
     <h2>Data That Stays on Your Device</h2>
     <ul>
-        <li><strong>Camera images:</strong> Photos are processed on-device using AI (YOLOv8n) to detect humans. Photos are saved to your device gallery only.</li>
+        <li><strong>Camera images and clips:</strong> Photos are processed on-device using AI (YOLO26n) to detect humans. Photos are saved to your device gallery only. If clip recording is enabled, short video clips (~10 seconds each) are also saved to your phone's local storage (Movies/HumanDetectorAI/). Nothing is transmitted unless you configure Telegram.</li>
         <li><strong>App settings:</strong> Configuration (device name, alarm preferences, PIN hash) is stored locally in SharedPreferences. Never transmitted.</li>
         <li><strong>Accelerometer data:</strong> Used only for theft/grab detection. Processed in real time on-device. Never stored or transmitted.</li>
     </ul>
@@ -89,7 +98,8 @@
     <h2>Permissions Used</h2>
     <ul>
         <li><strong>Camera:</strong> Required for human detection (core functionality).</li>
-        <li><strong>Internet:</strong> Used only for Telegram communication if you configure it. No other network calls are made.</li>
+        <li><strong>Microphone:</strong> Required for audio capture in pre-roll video clips and for live audio in Viewer Mode. Audio is stored locally in clips or streamed directly to your viewer phone — never to a third-party server.</li>
+        <li><strong>Internet:</strong> Used for Telegram communication (if configured) and for Viewer Mode, which connects your phones via the Tailscale private network. No data is sent to the developer's servers.</li>
         <li><strong>Foreground service:</strong> Keeps the app running in the background for continuous monitoring.</li>
         <li><strong>Wake lock:</strong> Prevents the screen from turning off during monitoring.</li>
     </ul>
@@ -98,11 +108,12 @@
     <ul>
         <li><strong>Telegram Bot API:</strong> Used only if you configure it. Subject to <a href="https://telegram.org/privacy">Telegram's Privacy Policy</a>.</li>
         <li><strong>Google Play Billing:</strong> If you purchase premium features, the transaction is handled by Google Play. Subject to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
+        <li><strong>Tailscale:</strong> If you use Viewer Mode, Tailscale creates an encrypted private network between your devices. Traffic is end-to-end encrypted; in some network conditions it may be relayed through Tailscale's infrastructure. Subject to <a href="https://tailscale.com/privacy-policy">Tailscale's Privacy Policy</a>.</li>
     </ul>
     <p>No other third-party services, SDKs, or analytics are used.</p>
 
     <h2>AI Processing</h2>
-    <p>All AI processing (YOLOv8n human detection, MediaPipe face verification) runs entirely on your device using LiteRT (formerly TensorFlow Lite). No images are sent to any cloud AI service.</p>
+    <p>All AI processing (YOLO26n human detection, MediaPipe face verification) runs entirely on your device using LiteRT (formerly TensorFlow Lite). No images are sent to any cloud AI service.</p>
 
     <h2>Children's Privacy</h2>
     <p>This app is not directed at children under 13. We do not knowingly collect any data from anyone, including children.</p>
@@ -118,7 +129,7 @@
 </div>
 
 <div class="footer">
-    <p>HumanDetector AI — v1.0.13 | <a href="privacy-policy.html">Privacy Policy</a> | <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
+    <p>HumanDetector AI — v2.0 | <a href="privacy-policy.html">Privacy Policy</a> | <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
 </div>
 
 </body>
