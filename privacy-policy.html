@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — HumanDetector AI</title>
+    <title>Privacy Policy — Watching Hawk</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,16 +51,8 @@
 
 <div class="site-header">
     <a href="index.html" class="site-logo">
-        <svg class="site-icon" viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg">
-            <rect width="108" height="108" rx="20" fill="#1A1A2E"/>
-            <circle cx="54" cy="20" r="10" fill="#44AAFF"/>
-            <path d="M44,38 Q44,50 54,52 Q64,50 64,38 L64,65 L58,65 L58,88 L50,88 L50,65 L44,65 Z" fill="#44AAFF"/>
-            <path d="M15,15 L15,28 M15,15 L28,15" stroke="#44FF88" stroke-width="3" fill="none"/>
-            <path d="M93,15 L93,28 M93,15 L80,15" stroke="#44FF88" stroke-width="3" fill="none"/>
-            <path d="M15,93 L15,80 M15,93 L28,93" stroke="#44FF88" stroke-width="3" fill="none"/>
-            <path d="M93,93 L93,80 M93,93 L80,93" stroke="#44FF88" stroke-width="3" fill="none"/>
-        </svg>
-        <span>HumanDetector <em>AI</em></span>
+        <img class="site-icon" src="hawk-icon.png" alt="Watching Hawk" style="border-radius:18%">
+        <span>Watching <em>Hawk</em></span>
     </a>
 </div>
 
@@ -71,10 +63,10 @@
 
 <div class="container">
     <h1>Privacy <span>Policy</span></h1>
-    <p class="subtitle">HumanDetector AI — "Human Detector — AI Security Camera" | Last updated: June 2026</p>
+    <p class="subtitle">Watching Hawk — "Watching Hawk: Old Phone Cam" (formerly HumanDetector AI) | Last updated: 2026-10-26</p>
 
     <h2>Overview</h2>
-    <p>HumanDetector AI is a security camera app that runs entirely on your device. We do not collect, store, or transmit any personal data to our servers. We do not have servers.</p>
+    <p>Watching Hawk is a security camera app that runs entirely on your device. We do not collect, store, or transmit any personal data to our servers. We do not have servers.</p>
 
     <div class="highlight">
         <p>We collect zero data. Everything stays on your phone.</p>
@@ -84,7 +76,8 @@
     <ul>
         <li><strong>Camera images and clips:</strong> Photos are processed on-device using AI (YOLO26n) to detect humans. Photos are saved to your device gallery only. If clip recording is enabled, short video clips (~10 seconds each) are also saved to your phone's local storage (Movies/HumanDetectorAI/). Nothing is transmitted unless you configure Telegram.</li>
         <li><strong>App settings:</strong> Configuration (device name, alarm preferences, PIN hash) is stored locally in SharedPreferences. Never transmitted.</li>
-        <li><strong>Accelerometer data:</strong> Used only for theft/grab detection. Processed in real time on-device. Never stored or transmitted.</li>
+        <li><strong>Accelerometer data:</strong> Used only for theft/grab detection and Dashcam crash detection. Processed in real time on-device. Never stored or transmitted.</li>
+        <li><strong>Dashcam recordings &amp; GPS track:</strong> In Dashcam mode, video segments are saved to your phone's local storage (Movies/HumanDetectorAI/Dashcam/) or a removable SD card. If you enable the GPS overlay, your location and speed are recorded — only while you are actively dashcam-recording — and stored on the device alongside the video. This location data is only written into a clip if <em>you</em> choose the speed or map overlay when exporting. It is never used in the background or transmitted to the developer.</li>
     </ul>
 
     <h2>Data You Choose to Send</h2>
@@ -99,6 +92,7 @@
     <ul>
         <li><strong>Camera:</strong> Required for human detection (core functionality).</li>
         <li><strong>Microphone:</strong> Required for audio capture in pre-roll video clips and for live audio in Viewer Mode. Audio is stored locally in clips or streamed directly to your viewer phone — never to a third-party server.</li>
+        <li><strong>Location (optional):</strong> Used only by Dashcam mode, only while recording, to add a GPS / speed track to your dashcam footage. Stored on the device; never used in the background or sent to the developer. Dashcam works without it (you simply get no GPS overlay).</li>
         <li><strong>Internet:</strong> Used for Telegram communication (if configured) and for Viewer Mode, which connects your phones via the Tailscale private network. No data is sent to the developer's servers.</li>
         <li><strong>Foreground service:</strong> Keeps the app running in the background for continuous monitoring.</li>
         <li><strong>Wake lock:</strong> Prevents the screen from turning off during monitoring.</li>
@@ -109,11 +103,14 @@
         <li><strong>Telegram Bot API:</strong> Used only if you configure it. Subject to <a href="https://telegram.org/privacy">Telegram's Privacy Policy</a>.</li>
         <li><strong>Google Play Billing:</strong> If you purchase premium features, the transaction is handled by Google Play. Subject to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
         <li><strong>Tailscale:</strong> If you use Viewer Mode, Tailscale creates an encrypted private network between your devices. Traffic is end-to-end encrypted; in some network conditions it may be relayed through Tailscale's infrastructure. Subject to <a href="https://tailscale.com/privacy-policy">Tailscale's Privacy Policy</a>.</li>
+        <li><strong>OpenStreetMap:</strong> When you export a Dashcam clip with the map overlay option on, map tiles for that area are fetched from OpenStreetMap to draw the map inset. This happens only during that export. Subject to the <a href="https://www.openstreetmap.org/copyright">OpenStreetMap copyright and licence</a>.</li>
+        <li><strong>Hugging Face:</strong> Only if you turn on the optional Local AI assistant: its AI model file is downloaded once from Hugging Face (huggingface.co), which sees your IP address like any website you download from. Nothing about you or what you say is sent. Subject to <a href="https://huggingface.co/privacy">Hugging Face's Privacy Policy</a>.</li>
     </ul>
     <p>No other third-party services, SDKs, or analytics are used.</p>
 
     <h2>AI Processing</h2>
-    <p>All AI processing (YOLO26n human detection, MediaPipe face verification) runs entirely on your device using LiteRT (formerly TensorFlow Lite). No images are sent to any cloud AI service.</p>
+    <p>All AI processing (YOLO26n human detection, face verification, baby-cry detection) runs entirely on your device using LiteRT (formerly TensorFlow Lite). No images are sent to any cloud AI service.</p>
+    <p>The optional <strong>Local AI assistant</strong> (Gemma 4 E2B) also runs entirely on your device. It hears your voice itself: your speech and questions are not sent to Google, to us or to anyone else, and they are not stored.</p>
 
     <h2>Children's Privacy</h2>
     <p>This app is not directed at children under 13. We do not knowingly collect any data from anyone, including children.</p>
@@ -129,7 +126,7 @@
 </div>
 
 <div class="footer">
-    <p>HumanDetector AI — v2.0 | <a href="privacy-policy.html">Privacy Policy</a> | <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
+    <p>Watching Hawk (formerly HumanDetector AI) | <a href="privacy-policy.html">Privacy Policy</a> | <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
 </div>
 
 </body>
