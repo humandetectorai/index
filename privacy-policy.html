@@ -1,133 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Watching Hawk</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #0d0d1a; --card: #151528; --accent: #44aaff; --green: #44ff88; --text: #e0e0f0; --muted: #888899; --border: #252540; }
-        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-        .nav {
-            display: flex; justify-content: center; gap: 6px;
-            padding: 14px 20px;
-            background: var(--card);
-            border-top: 2px solid var(--accent);
-            border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: var(--muted); text-decoration: none; font-size: 12px;
-            font-family: 'JetBrains Mono', monospace; padding: 6px 13px;
-            border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s;
-            letter-spacing: 0.02em;
-        }
-        .nav a:hover { background: rgba(68,170,255,0.08); border-color: var(--accent); color: var(--accent); }
-        .nav a.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
-        .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
-        h1 { font-size: 28px; margin-bottom: 8px; } h1 span { color: var(--accent); }
-        .subtitle { color: var(--muted); margin-bottom: 32px; }
-        h2 { font-size: 20px; color: var(--accent); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-        p { margin-bottom: 12px; }
-        ul { padding-left: 20px; margin-bottom: 12px; }
-        li { margin-bottom: 6px; }
-        a { color: var(--accent); }
-        strong { color: var(--green); }
-        .highlight { background: var(--card); border: 1px solid var(--green); border-radius: 8px; padding: 16px; margin: 16px 0; text-align: center; }
-        .highlight p { font-size: 18px; font-weight: 600; color: var(--green); margin: 0; }
-        .contact { background: var(--card); border: 1px solid var(--accent); border-radius: 12px; padding: 24px; margin-top: 32px; text-align: center; }
-        .contact h2 { border: none; margin-top: 0; }
-        .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
-        .footer a { color: var(--accent); text-decoration: none; }
-
-        .site-header { text-align: center; padding: 16px 20px 8px; background: var(--bg); }
-        .site-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-size: 18px; font-weight: 700; }
-        .site-logo em { color: var(--accent); font-style: normal; }
-        .site-icon { width: 36px; height: 36px; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watching Hawk Privacy Policy has moved</title>
+<link rel="canonical" href="https://bosphorusarcade.com/watching-hawk/privacy/">
+<meta http-equiv="refresh" content="0; url=https://bosphorusarcade.com/watching-hawk/privacy/">
+<style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1rem;line-height:1.6;color:#111}a{color:#0b5cad}</style>
 </head>
 <body>
-
-<div class="site-header">
-    <a href="index.html" class="site-logo">
-        <img class="site-icon" src="hawk-icon.png" alt="Watching Hawk" style="border-radius:18%">
-        <span>Watching <em>Hawk</em></span>
-    </a>
-</div>
-
-<nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="privacy-policy.html" class="active">Privacy Policy</a>
-</nav>
-
-<div class="container">
-    <h1>Privacy <span>Policy</span></h1>
-    <p class="subtitle">Watching Hawk — "Watching Hawk: Old Phone Cam" (formerly HumanDetector AI) | Last updated: 2026-10-26</p>
-
-    <h2>Overview</h2>
-    <p>Watching Hawk is a security camera app that runs entirely on your device. We do not collect, store, or transmit any personal data to our servers. We do not have servers.</p>
-
-    <div class="highlight">
-        <p>We collect zero data. Everything stays on your phone.</p>
-    </div>
-
-    <h2>Data That Stays on Your Device</h2>
-    <ul>
-        <li><strong>Camera images and clips:</strong> Photos are processed on-device using AI (YOLO26n) to detect humans. Photos are saved to your device gallery only. If clip recording is enabled, short video clips (~10 seconds each) are also saved to your phone's local storage (Movies/HumanDetectorAI/). Nothing is transmitted unless you configure Telegram.</li>
-        <li><strong>App settings:</strong> Configuration (device name, alarm preferences, PIN hash) is stored locally in SharedPreferences. Never transmitted.</li>
-        <li><strong>Accelerometer data:</strong> Used only for theft/grab detection and Dashcam crash detection. Processed in real time on-device. Never stored or transmitted.</li>
-        <li><strong>Dashcam recordings &amp; GPS track:</strong> In Dashcam mode, video segments are saved to your phone's local storage (Movies/HumanDetectorAI/Dashcam/) or a removable SD card. If you enable the GPS overlay, your location and speed are recorded — only while you are actively dashcam-recording — and stored on the device alongside the video. This location data is only written into a clip if <em>you</em> choose the speed or map overlay when exporting. It is never used in the background or transmitted to the developer.</li>
-    </ul>
-
-    <h2>Data You Choose to Send</h2>
-    <ul>
-        <li><strong>Telegram integration:</strong> If you configure a Telegram bot, the app sends detection photos and status messages to <em>your own</em> Telegram chat using <em>your own</em> bot token and chat ID. This communication is between your device and Telegram's servers. The developer has no access to your bot token, chat ID, or any messages.</li>
-    </ul>
-
-    <h2>Data We Collect</h2>
-    <p><strong>None.</strong> We do not collect any data. We do not have analytics, tracking, crash reporting, or any server infrastructure. The app works entirely offline (except for the optional Telegram feature that you configure yourself).</p>
-
-    <h2>Permissions Used</h2>
-    <ul>
-        <li><strong>Camera:</strong> Required for human detection (core functionality).</li>
-        <li><strong>Microphone:</strong> Required for audio capture in pre-roll video clips and for live audio in Viewer Mode. Audio is stored locally in clips or streamed directly to your viewer phone — never to a third-party server.</li>
-        <li><strong>Location (optional):</strong> Used only by Dashcam mode, only while recording, to add a GPS / speed track to your dashcam footage. Stored on the device; never used in the background or sent to the developer. Dashcam works without it (you simply get no GPS overlay).</li>
-        <li><strong>Internet:</strong> Used for Telegram communication (if configured) and for Viewer Mode, which connects your phones via the Tailscale private network. No data is sent to the developer's servers.</li>
-        <li><strong>Foreground service:</strong> Keeps the app running in the background for continuous monitoring.</li>
-        <li><strong>Wake lock:</strong> Prevents the screen from turning off during monitoring.</li>
-    </ul>
-
-    <h2>Third-Party Services</h2>
-    <ul>
-        <li><strong>Telegram Bot API:</strong> Used only if you configure it. Subject to <a href="https://telegram.org/privacy">Telegram's Privacy Policy</a>.</li>
-        <li><strong>Google Play Billing:</strong> If you purchase premium features, the transaction is handled by Google Play. Subject to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
-        <li><strong>Tailscale:</strong> If you use Viewer Mode, Tailscale creates an encrypted private network between your devices. Traffic is end-to-end encrypted; in some network conditions it may be relayed through Tailscale's infrastructure. Subject to <a href="https://tailscale.com/privacy-policy">Tailscale's Privacy Policy</a>.</li>
-        <li><strong>OpenStreetMap:</strong> When you export a Dashcam clip with the map overlay option on, map tiles for that area are fetched from OpenStreetMap to draw the map inset. This happens only during that export. Subject to the <a href="https://www.openstreetmap.org/copyright">OpenStreetMap copyright and licence</a>.</li>
-        <li><strong>Hugging Face:</strong> Only if you turn on the optional Local AI assistant: its AI model file is downloaded once from Hugging Face (huggingface.co), which sees your IP address like any website you download from. Nothing about you or what you say is sent. Subject to <a href="https://huggingface.co/privacy">Hugging Face's Privacy Policy</a>.</li>
-    </ul>
-    <p>No other third-party services, SDKs, or analytics are used.</p>
-
-    <h2>AI Processing</h2>
-    <p>All AI processing (YOLO26n human detection, face verification, baby-cry detection) runs entirely on your device using LiteRT (formerly TensorFlow Lite). No images are sent to any cloud AI service.</p>
-    <p>The optional <strong>Local AI assistant</strong> (Gemma 4 E2B) also runs entirely on your device. It hears your voice itself: your speech and questions are not sent to Google, to us or to anyone else, and they are not stored.</p>
-
-    <h2>Children's Privacy</h2>
-    <p>This app is not directed at children under 13. We do not knowingly collect any data from anyone, including children.</p>
-
-    <h2>Changes to This Policy</h2>
-    <p>We may update this policy if we add new features. The "Last updated" date at the top will reflect changes. Continued use of the app after changes constitutes acceptance.</p>
-
-    <div class="contact">
-        <h2>Contact</h2>
-        <p>If you have questions about this privacy policy, contact us at:</p>
-        <p><a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
-    </div>
-</div>
-
-<div class="footer">
-    <p>Watching Hawk (formerly HumanDetector AI) | <a href="privacy-policy.html">Privacy Policy</a> | <a href="mailto:humandetectorai@gmail.com">humandetectorai@gmail.com</a></p>
-</div>
-
+<h1>Watching Hawk Privacy Policy has moved</h1>
+<p>This page has moved to <a href="https://bosphorusarcade.com/watching-hawk/privacy/">https://bosphorusarcade.com/watching-hawk/privacy/</a>. You should be taken there automatically.</p>
+<p lang="tr">Bu sayfa taşındı: <a href="https://bosphorusarcade.com/watching-hawk/privacy/">https://bosphorusarcade.com/watching-hawk/privacy/</a>. Otomatik olarak yönlendirilmeniz gerekir.</p>
 </body>
 </html>
